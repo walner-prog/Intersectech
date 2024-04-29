@@ -1,7 +1,7 @@
 <template>
-  <section id="recursos-educativos">
+  <section id="recursos-educativos fade-in">
 
-    <div class="row">
+    <div class="row fade-in">
       <div class="col-lg-12 col-md-12 col-xl-12">
         <!-- Banner con iconos -->
         <div class="banner">
@@ -198,6 +198,7 @@
       },
       mounted(){
           this.getProducts();
+          this.observeElements();
       },
       methods:{
           getProducts(){
@@ -206,12 +207,34 @@
                       this.products = response.data
                   )
               );
+          },
+
+          observeElements() {
+      const elements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+            observer.unobserve(entry.target);
           }
+        });
+      });
+      elements.forEach(element => observer.observe(element));
+    },
       }
+
   }
   </script>
   
   <style scoped>
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .fade-in-visible {
+    opacity: 1;
+  }
   .bg-container{
     background-color:#fff;
   }
