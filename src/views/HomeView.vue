@@ -202,7 +202,7 @@ searchPosts() {
   .form-control {
     background-color:darkslategray; /* Cambia el color de fondo del input */
     color: white; /* Cambia el color del texto dentro del input */
-    border-color:olivedrab ;/* Cambia el color del borde del input */
+    border-color:rgb(255, 255, 233) ;/* Cambia el color del borde del input */
   }
 
   /* Estilos CSS para el botón */
