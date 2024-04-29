@@ -2,15 +2,15 @@
   <div class="container">
      <div class="row">
       <div class="col-lg-4 offset-lg-2 mb-3 col-md-8">
-        <input type="text" v-model="categoryFilter" class="form-control border-warning " placeholder="Buscar por título">
+        <input type="text" v-model="categoryFilter" class="form-control border-warning fade-in " placeholder="Buscar por título">
       </div>
       <div class="col-lg-2 col-sm-4 mb-3"> <!-- Ajusta las clases de la columna para dispositivos pequeños -->
         <!-- Botón de búsqueda -->
-        <button @click="searchPosts" class="btn btn-warning">Buscar</button>
+        <button @click="searchPosts" class="btn btn-warning fade-in">Buscar</button>
       </div>
       
      </div>
-     <div class="row justify-content-center align-items-center">
+     <div class="row justify-content-center align-items-center fade-in">
       <div class="col-lg-10  col-sm-12">
         <div class="row">
           <!-- Verifica si hay posts antes de iterar sobre ellos -->
@@ -21,7 +21,7 @@
           </template>
           <!-- Mensaje si no hay resultados -->
           <template v-else>
-            <div class="col-md-12">
+            <div class="col-md-12 fade-in">
               <p>No hay resultados de búsqueda.</p>
             </div>
           </template>
@@ -30,7 +30,7 @@
      </div>
   </div>
     
-  <div class="row justify-content-center justify-content-center align-items-center">
+  <div class="row justify-content-center justify-content-center align-items-center fade-in">
     <div class="col-lg-12 col-sm-12">
       <div class="row">
         <div class="col-lg-12">
@@ -85,7 +85,7 @@
     </div>
     
       <br>
-      <div class="row">
+      <div class="row fade-in">
         <h3>Aprende sobre diferentes temas.</h3>
         <div class="col-md-4" v-for="post in posts" :key="post.id">
           <div class="card mb-3">
@@ -122,6 +122,7 @@ export default {
   },
   mounted() {
     this.getUsers();
+    this.observeElements();
   },
   methods: {
     async getUsers() {
@@ -139,7 +140,18 @@ searchPosts() {
   this.posts = this.posts.filter(post => post.title.toLowerCase().includes(this.categoryFilter.toLowerCase()));
 },
 
-
+observeElements() {
+      const elements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      elements.forEach(element => observer.observe(element));
+    },
 
     // Método para buscar usuarios por nombre
     searchUsers() {
@@ -198,6 +210,15 @@ searchPosts() {
 
 <style>
 /* Estilos CSS */
+/* Estilos CSS para el fade-in */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.fade-in-visible {
+  opacity: 1;
+}
   /* Estilos CSS para el input */
   .form-control {
     background-color:darkslategray; /* Cambia el color de fondo del input */
