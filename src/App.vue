@@ -12,10 +12,10 @@
             <router-link to="/home" class="nav-link" aria-current="page">Inicio</router-link>
           </li>
           <li class="nav-item" :class="{ 'active': $route.path === '/users' }">
-            <router-link to="/users" class="nav-link">Acerca de</router-link>
+            <router-link to="/acerca-de" class="nav-link">Acerca de</router-link>
           </li>
-          <li class="nav-item" :class="{ 'active': $route.path === '/reporte' }">
-            <router-link to="/reporte" class="nav-link">Servicios</router-link>
+          <li class="nav-item" :class="{ 'active': $route.path === '/servicio' }">
+            <router-link to="/servicio" class="nav-link">Servicios</router-link>
           </li>
  
           </ul>

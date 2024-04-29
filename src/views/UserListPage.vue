@@ -6,7 +6,7 @@
   </template>
   
   <script>
-import UserList from './UserList.vue';
+import UserList from './AcercaDe.vue';
   import Swal from 'sweetalert2';
   import axios from 'axios';
   

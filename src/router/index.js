@@ -6,7 +6,7 @@ import EditProduct from '@/views/EditProduct.vue'; // Importa el componente de e
 import CreateProduct from '@/views/CreateProduct.vue'; // Importa el componente de edición de producto
 import AboutView from '../views/AboutView.vue';
 import GraficaView from '../views/GraficaView.vue';
-import ReporteView from '../views/ReporteView.vue';
+import ReporteView from '../views/ServicioView.vue';
 import Login       from '../views/Login.vue';
 import RegisterForm from '../views/RegisterForm.vue';
 import UserListPage from '../views/UserListPage.vue';
@@ -39,8 +39,8 @@ const routes = [
     component: GraficaView
   },
   {
-    path: '/reporte',
-    name: 'reporte',
+    path: '/servicio',
+    name: 'servicio',
     component: ReporteView
   },
 
@@ -64,8 +64,8 @@ const routes = [
   },
 
   {
-    path: '/users',
-    name: 'UserList',
+    path: '/acerca-de',
+    name: 'Acerca-de',
     component: UserListPage // Asocia la ruta a la nueva vista
   },
   
