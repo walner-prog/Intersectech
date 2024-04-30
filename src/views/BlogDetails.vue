@@ -6,11 +6,12 @@
       <div class="col-lg-8 col-md-12">
         <div>
           <h2>{{ post.title }}</h2>
+         
+          <img :src="post.photo_url" alt="Imagen de la publicación" style="max-width: 100%; height: auto;">
           <p class="card-text text-dark text-opacity-50 fs-6">
             <span class="text-secondary">Author:</span> {{ post.author }} <br>
             <span class="text-secondary">Categoria:</span> {{ post.category }}
           </p>
-          <img :src="post.photo_url" alt="Imagen de la publicación" style="max-width: 100%; height: auto;">
           <br><br>
           <div v-if="post.content">
             <p v-for="(paragraph, index) in post.content.split('\n')" :key="index">
