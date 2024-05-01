@@ -92,3 +92,5 @@ export default {
   <style>
   /* Estilos CSS para el componente BlogDetails */
   </style>
+
+  <!---->

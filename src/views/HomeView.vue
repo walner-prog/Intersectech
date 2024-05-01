@@ -88,9 +88,9 @@
       <div class="row fade-in">
         <h3>Aprende sobre diferentes temas.</h3>
         <div class="col-md-4" v-for="post in posts" :key="post.id">
-          <div class="card mb-3">
+          <div class="card mb-3 ">
             <img :src="post.photo_url" class="card-img-top" alt="Imagen de la publicación">
-            <div class="card-body">
+            <div class="card-body color-card">
               <router-link :to="{ name: 'BlogDetails', params: { id: post.id } }">
                 <h5 class="card-title">{{ post.title }}</h5>
               </router-link>
@@ -111,7 +111,7 @@
 
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
+import slugify from 'slugify'; // Importa la librería para generar slugs
 export default {
  
   data() {
@@ -139,6 +139,8 @@ searchPosts() {
   // Filtra los posts según el título ingresado por el usuario
   this.posts = this.posts.filter(post => post.title.toLowerCase().includes(this.categoryFilter.toLowerCase()));
 },
+
+
 
 observeElements() {
       const elements = document.querySelectorAll('.fade-in');
@@ -201,15 +203,20 @@ observeElements() {
     goToCreateProductView() {
       // Redirige a la vista de creación de usuario
       this.$router.push({ name: 'create-product' });
-    }
+    },
     
+    getPostUrl(post) {
+  // Genera el slug a partir del título del post y lo usa en la URL
+  const slug = slugify(post.title, { lower: true });
+  return `/blog/${slug}`;
   }
-  
+
+  },
 };
 </script>
 
 <style>
-/* Estilos CSS */
+ /* Estilos CSS */
 /* Estilos CSS para el fade-in */
 .fade-in {
   opacity: 0;
@@ -221,7 +228,7 @@ observeElements() {
 }
   /* Estilos CSS para el input */
   .form-control {
-    background-color:darkslategray; /* Cambia el color de fondo del input */
+    background-color:rgb(255, 237, 205); /* Cambia el color de fondo del input */
     color: white; /* Cambia el color del texto dentro del input */
     border-color:rgb(255, 255, 233) ;/* Cambia el color del borde del input */
   }
@@ -236,7 +243,9 @@ observeElements() {
   .btn-orange:hover {
     color: orange;
   }
-
+  .color-card{
+    background-color: rgb(251, 186, 66); 
+  }
   .overlay {
     position: absolute;
     top: 0;

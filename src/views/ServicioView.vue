@@ -1,10 +1,6 @@
 <template>
   <section id="recursos-educativos fade-in">
-
-    <div class="row fade-in">
-      <div class="col-lg-12 col-md-12 col-xl-12">
-        <!-- Banner con iconos -->
-        <div class="banner">
+       <div class="banner">
           <!-- Imagen del banner -->
           <img src="/banner.jpg" alt="Banner" class="banner-img">
           <!-- Texto en el banner -->
@@ -39,16 +35,22 @@
             <i class="fab fa-github icon"></i>
           </div>
         </div>
+    <div class="row fade-in">
+      <div class="col-lg-12 col-md-12 col-xl-12">
+        <!-- Banner con iconos -->
+       
       </div>
     </div>
     <div class="container bg-container">
 
-       <div class="row text-secondary">
+      <div class="row text-secondary bg-custom">
         <div class="col-md-12">
-          <h2 class=" text-center text-orange ">Recursos Educativos Gratuitos</h2>
-          <p class=" text-center">Explora una basta  colección de recursos educativos gratuitos para mejorar tus habilidades y conocimientos en tecnología.</p>
+          <h2 class="text-center text-orange">Recursos Educativos <strong class="Gratuitos">Gratuitos <i class="fas fa-gift"></i></strong></h2>
+
+          <p class="text-center">Explora una vasta colección de recursos educativos gratuitos para mejorar tus habilidades y conocimientos en tecnología.</p>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-md-4 mb-2">
           <div class="card border-top border-orange" style="background-color: rgb(0, 12, 116);">
@@ -74,6 +76,9 @@
                 <li><a href="#">Plantilla 1</a></li>
                 <li><a href="#">Plantilla 2</a></li>
                 <li><a href="#">Plantilla 3</a></li>
+                <li><a href="#">Plantilla 1</a></li>
+                <li><a href="#">Plantilla 2</a></li>
+                <li><a href="#">Plantilla 3</a></li>
               </ul>
             </div>
           </div>
@@ -85,6 +90,8 @@
               <p class="card-text text-center text-secondary">Accede a cursos en línea gratuitos sobre programación, diseño web, desarrollo de aplicaciones y más.</p>
               <ul class="text-secondary">
                 <li><a href="#">Curso 1</a></li>
+                <li><a href="#">Curso 2</a></li>
+                <li><a href="#">Curso 3</a></li>
                 <li><a href="#">Curso 2</a></li>
                 <li><a href="#">Curso 3</a></li>
               </ul>
@@ -227,6 +234,22 @@
   </script>
   
   <style scoped>
+
+  :root {
+    --color-fondo: #fff;
+    --color-texto: #000;
+  }
+  
+  .dark-theme {
+    --color-fondo: #1e1e1e;
+    --color-texto: #fff;
+  }
+  
+  body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+  }
+  
   .fade-in {
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -238,6 +261,14 @@
   .bg-container{
     background-color:#fff;
   }
+
+  
+/*.bg-custom {
+  background-color:darkblue; /* Reemplaza "YourColor" con el color deseado 
+  margin-top:10px;
+  margin-bottom: 20px;;
+}*/
+
   .video-container {
     border: 1px solid #ccc;
     padding: 15px;
@@ -249,7 +280,8 @@
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 10px; /* Espacio entre el banner y el navbar */
+    /*margin-bottom: 10px; /* Espacio entre el banner y el navbar */
+    position: relative; /* Permite posicionar el texto de manera absoluta */
   }
   .banner {
     height: auto;
@@ -309,6 +341,9 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+  }
+  .Gratuitos{
+    color:rgb(0, 12, 116);
   }
   
   /* Animación de los iconos */
