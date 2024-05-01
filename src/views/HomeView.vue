@@ -37,7 +37,7 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2015/12/139161-que-es-inteligencia-artificial.jpg?tf=1200x" class="d-block w-100" alt="...">
+                        <img src="https://www.inabaweb.com/wp-content/uploads/2023/04/Que-es-la-programacion-1143x660.png" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block text-center text-light">
                             <div class="overlay"></div> <!-- Fondo semitransparente -->
                             <div class="caption-content">
@@ -86,7 +86,10 @@
     
       <br>
       <div class="row fade-in">
-        <h3>Aprende sobre diferentes temas.</h3>
+        <div class="floating-container">
+          <i class="fas fa-star floating-icon"></i>
+          <h3 class="floating-text">Aprende sobre <strong>diferentes temas.</strong></h3>
+        </div>
         <div class="col-md-4" v-for="post in posts" :key="post.id">
           <div class="card mb-3 ">
             <img :src="post.photo_url" class="card-img-top" alt="Imagen de la publicación">
@@ -274,6 +277,60 @@ observeElements() {
     margin: 0; /* Elimina los márgenes predeterminados */
 }
 
+.floating-text {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  animation: floatAnimation 3s infinite alternate;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+    color:orange; 
+  }
+  50% {
+    transform: translateY(-10px);
+    color: rgb(0, 12, 116);
+  }
+  100% {
+    transform: translateY(0);
+    color:orange; 
+  }
+}
+.floating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floating-text {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  animation: floatAnimation 3s infinite alternate;
+}
+
+.floating-icon {
+  font-size: 24px;
+  margin-right: 5px;
+  animation: floatAnimation 3s infinite alternate;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+    color:orange; 
+  }
+  50% {
+    transform: translateY(-10px);
+    color: rgb(0, 12, 116);
+  }
+  100% {
+    transform: translateY(0);
+    color:orange; 
+  }
+}
 </style>
 
 
