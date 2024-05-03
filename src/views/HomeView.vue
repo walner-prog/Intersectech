@@ -8,6 +8,15 @@
         <!-- Botón de búsqueda -->
         <button @click="searchPosts" class="btn btn-warning fade-in">Buscar</button>
       </div>
+
+      <div class="col-lg-2 col-sm-2 mb-3">
+        <div class="card clock-card border-bottom ">
+          <div class="card-body bg-warning">
+            <i class="fas fa-clock mr-2 text-white fs-2 float-start "></i>
+            <div class="clock">{{ currentTime }}</div>
+          </div>
+        </div>
+      </div>
       
      </div>
      <div class="row justify-content-center align-items-center fade-in">
@@ -105,6 +114,10 @@
           </div>
         </div>
       </div>
+
+      
+      
+      
     </div>
   </div>
   
@@ -121,11 +134,15 @@ export default {
     return {
       posts: [],
       categoryFilter: '', // Nueva propiedad para la búsqueda por nombre de usuario
+      currentTime: ''
+
     };
   },
   mounted() {
     this.getUsers();
     this.observeElements();
+    this.updateClock();
+    setInterval(this.updateClock, 1000);
   },
   methods: {
     async getUsers() {
@@ -142,7 +159,16 @@ searchPosts() {
   // Filtra los posts según el título ingresado por el usuario
   this.posts = this.posts.filter(post => post.title.toLowerCase().includes(this.categoryFilter.toLowerCase()));
 },
-
+  updateClock() {
+      const now = new Date();
+      const hours = this.formatTime(now.getHours());
+      const minutes = this.formatTime(now.getMinutes());
+      const seconds = this.formatTime(now.getSeconds());
+      this.currentTime = `${hours}:${minutes}:${seconds}`;
+    },
+    formatTime(time) {
+      return time < 10 ? '0' + time : time;
+    },
 
 
 observeElements() {
@@ -216,11 +242,30 @@ observeElements() {
 
   },
 };
+ 
 </script>
 
 <style>
  /* Estilos CSS */
-/* Estilos CSS para el fade-in */
+/* Estilos para el reloj digital */
+.clock {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+}
+
+/* Estilos para la tarjeta del reloj */
+.clock-card {
+  border: 1px solid #001356;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+  border-radius: 25px;
+}
 .fade-in {
   opacity: 0;
   transition: opacity 1s ease;
@@ -282,6 +327,39 @@ observeElements() {
   font-weight: bold;
   text-align: center;
   animation: floatAnimation 3s infinite alternate;
+}
+
+/* Estilos para las tarjetas de regalía */
+.card {
+  transition: box-shadow 0.3s ease; /* Transición suave para el efecto de sombra */
+  color: rgb(255, 196, 0);
+
+  
+}
+ .border-orange{
+  color: rgb(255, 196, 0);
+ }
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Añade una sombra al hacer hover */
+
+}
+
+.focused {
+  filter: brightness(1.2); /* Ajusta el brillo cuando está enfocado */
+}
+
+.card {
+  transition: border-top-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.card:hover {
+  border-top-color: transparent; /* Hace que el borde superior sea transparente cuando se pasa el ratón */
+
+}
+
+.card:hover .card-body {
+  background-color: rgba(0, 0, 0, 0.05); /* Cambia el color de fondo del cuerpo de la tarjeta cuando se pasa el ratón */
 }
 
 @keyframes floatAnimation {
