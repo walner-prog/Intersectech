@@ -5,21 +5,21 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon text-danger"></span>
       </button>
-      <div class="collapse navbar-collapse linknav" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse linknav" id="navbarSupportedContent" ref="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" :class="{ 'active': $route.path === '/home' }">
+          <li class="nav-item" :class="{ 'active': $route.path === '/home' }" @click="closeNavbar">
             <router-link to="/home" class="nav-link" aria-current="page">Inicio</router-link>
           </li>
-          <li class="nav-item" :class="{ 'active': $route.path === '/acerca-de' }">
+          <li class="nav-item" :class="{ 'active': $route.path === '/acerca-de' }" @click="closeNavbar">
             <router-link to="/acerca-de" class="nav-link">Acerca de</router-link>
           </li>
-          <li class="nav-item" :class="{ 'active': $route.path === '/servicio' }">
+          <li class="nav-item" :class="{ 'active': $route.path === '/servicio' }" @click="closeNavbar">
             <router-link to="/servicio" class="nav-link">Servicios</router-link>
           </li>
         </ul>
         <div class="row">
           <div class="col-lg-2 col-sm-4 mb-6">
-            <button @click="toggleDarkMode" class="btn btn-outline-light ml-2" :class="{ 'active': darkMode }">
+            <button @click="toggleDarkMode" class="btn btn-outline-light ml-2" :class="{ 'active': darkMode }" >
               <i class="fas" :class="{ 'fa-moon': darkMode, 'fa-sun': !darkMode }" @mouseover="toggleHover" @mouseleave="toggleHover"></i>
             </button>
           </div>
@@ -123,6 +123,10 @@ export default {
     },
     toggleHover() {
       this.isHovered = !this.isHovered;
+    },
+    closeNavbar() {
+      // Cierra el menú desplegable cambiando su estado a falso
+      this.$refs.navbarCollapse.classList.remove('show');
     }
   }
 };

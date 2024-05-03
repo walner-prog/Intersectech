@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-     <div class="row">
+     <div class="row mt-2">
       <div class="col-lg-4 offset-lg-2 mb-3 col-md-8">
         <input type="text" v-model="categoryFilter" class="form-control border-warning fade-in " placeholder="Buscar por título">
       </div>

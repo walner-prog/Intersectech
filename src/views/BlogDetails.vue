@@ -1,52 +1,52 @@
-
 <template>
- 
-  <div class="container">
+  <div class="container" ref="mainContent">
     <div class="row">
-      <div class="col-lg-8 col-md-12">
-        <div>
-          <h2>{{ post.title }}</h2>
-         
+      <div class="col-lg-8 col-md-12 mb-2">
+       
+        <!-- Imagen del post -->
+        <div class="fade-i">
           <img :src="post.photo_url" alt="Imagen de la publicación" style="max-width: 100%; height: auto;">
-          <p class="card-text text-dark text-opacity-50 fs-6">
-            <span class="text-secondary">Author:</span> {{ post.author }} <br>
-            <span class="text-secondary">Categoria:</span> {{ post.category }}
-          </p>
-          <br><br>
-          <div v-if="post.content">
-            <p v-for="(paragraph, index) in post.content.split('\n')" :key="index">
-              <!-- Si el párrafo comienza con un carácter específico, lo tratamos como un subtítulo -->
-              <template v-if="paragraph.startsWith('#')">
-                <h3>{{ paragraph.slice(1) }}</h3>
-              </template>
-              <!-- Si no, simplemente mostramos el texto del párrafo -->
-              <template v-else>
-                {{ paragraph }}
-              </template>
-            </p>
+        </div>
+                 <!-- Título del post -->
+        <div class="fade-i">
+          <h2>{{ post.title }}</h2>
+        </div>
+        <p class="card-text text-dark text-opacity-50 fs-6">
+          <span class="text-secondary">Author:</span> {{ post.author }} <br>
+          <span class="text-secondary">Categoria:</span> {{ post.category }}
+        </p>
+        <br>
+        <!-- Detalles del post -->
+        <div v-if="post.content">
+          <div v-for="(paragraph, index) in post.content.split('\n')" :key="index" class="fade-in">
+            <!-- Si el párrafo comienza con un carácter específico, lo tratamos como un subtítulo -->
+            <template v-if="paragraph.startsWith('#')">
+              <h3>{{ paragraph.slice(1) }}</h3>
+            </template>
+            <!-- Si no, simplemente mostramos el texto del párrafo -->
+            <template v-else>
+              <p>{{ paragraph }}</p>
+            </template>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-12">
-        <br><br><br><br>
-      
-        <!-- Filtra los posts relacionados basados en la misma categoría que el post actual -->
-        <div v-if="post">
+        <!-- Contenido relacionado -->
+        <div class="fade-i" v-if="post">
           <h3>Contenido relacionado</h3>
-          <div v-for="relatedPost in posts.filter(p => p.category === post.category && p.id !== post.id)" :key="relatedPost.id">
+          <div v-for="relatedPost in posts.filter(p => p.category === post.category && p.id !== post.id)" :key="relatedPost.id" class="fade-in">
             <img :src="relatedPost.photo_url" alt="Imagen del post relacionado" style="max-width: 100%;">
             <!-- Utiliza router-link para navegar al detalle del post relacionado -->
             <router-link :to="{ name: 'BlogDetails', params: { id: relatedPost.id } }">{{ relatedPost.title }}</router-link>
             <hr>
           </div>
-        
         </div>
       </div>
     </div>
   </div>
-  
-  </template>
-  <script>
+</template>
+
+<script>
 import axios from 'axios';
 
 export default {
@@ -72,6 +72,7 @@ export default {
       try {
         const response = await axios.get(`https://api-blog-v1-1.onrender.com/api/posts/${postId}`);
         this.post = response.data;
+        this.focusMainContent(); // Llama a la función para enfocar el contenido principal
       } catch (error) {
         console.error('Error al obtener los detalles de la publicación:', error);
       }
@@ -83,14 +84,35 @@ export default {
       } catch (error) {
         console.error('Error al obtener todos los posts:', error);
       }
-    }
+    },
+    focusMainContent() {
+  // Realiza el enfoque en el elemento del contenido principal sin animación
+  this.$refs.mainContent.scrollIntoView();
+}
+
   }
+  
 };
+
+/*focusMainContent() {
+      // Realiza el enfoque en el elemento del contenido principal después de un breve retraso
+      setTimeout(() => {
+        this.$refs.mainContent.scrollIntoView({ behavior: 'smooth' }); // Desplaza la página al contenido principal
+      }, 100);
+    }*/
 </script>
 
-  
-  <style>
-  /* Estilos CSS para el componente BlogDetails */
-  </style>
+<style>
+/* Estilos CSS para el componente BlogDetails */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
-  <!---->
+.fade-in.visible {
+  opacity: 1;
+}
+.container{
+  margin-top:30px
+}
+</style>
