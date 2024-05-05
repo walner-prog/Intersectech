@@ -264,7 +264,7 @@ observeElements() {
 
 .card-body {
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 0;
 }
 .fade-in {
   opacity: 0;

@@ -18,7 +18,7 @@
         <br>
         <!-- Detalles del post -->
         <div v-if="post.content">
-          <div v-for="(paragraph, index) in post.content.split('\n')" :key="index" class="fade-in">
+          <div v-for="(paragraph, index) in post.content.split('\n')" :key="index" class="fade-i">
             <!-- Si el párrafo comienza con un carácter específico, lo tratamos como un subtítulo -->
             <template v-if="paragraph.startsWith('#')">
               <h3>{{ paragraph.slice(1) }}</h3>
@@ -72,7 +72,7 @@ export default {
       try {
         const response = await axios.get(`https://api-blog-v1-1.onrender.com/api/posts/${postId}`);
         this.post = response.data;
-        this.focusMainContent(); // Llama a la función para enfocar el contenido principal
+        this.scrollToTop(); // Llama a la función para desplazar la página al inicio
       } catch (error) {
         console.error('Error al obtener los detalles de la publicación:', error);
       }
@@ -85,21 +85,12 @@ export default {
         console.error('Error al obtener todos los posts:', error);
       }
     },
-    focusMainContent() {
-  // Realiza el enfoque en el elemento del contenido principal sin animación
-  this.$refs.mainContent.scrollIntoView();
-}
-
+    scrollToTop() {
+      // Desplaza la página al inicio sin animación
+      window.scrollTo(0, 0);
+    }
   }
-  
 };
-
-/*focusMainContent() {
-      // Realiza el enfoque en el elemento del contenido principal después de un breve retraso
-      setTimeout(() => {
-        this.$refs.mainContent.scrollIntoView({ behavior: 'smooth' }); // Desplaza la página al contenido principal
-      }, 100);
-    }*/
 </script>
 
 <style>
