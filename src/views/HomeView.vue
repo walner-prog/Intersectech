@@ -1,24 +1,6 @@
 <template>
-  <div class="container">
-     <div class="row mt-2">
-      <div class="col-lg-4 offset-lg-2 mb-3 col-md-8">
-        <input type="text" v-model="categoryFilter" class="form-control border-warning fade-in " placeholder="Buscar por título">
-      </div>
-      <div class="col-lg-2 col-sm-4 mb-3"> <!-- Ajusta las clases de la columna para dispositivos pequeños -->
-        <!-- Botón de búsqueda -->
-        <button @click="searchPosts" class="btn btn-warning fade-in">Buscar</button>
-      </div>
-
-      <div class="col-lg-2 col-sm-2 mb-3">
-        <div class="card clock-card border-bottom ">
-          <div class="card-body bg-warning">
-            <i class="fas fa-clock mr-2 text-white fs-2 float-start "></i>
-            <div class="clock">{{ currentTime }}</div>
-          </div>
-        </div>
-      </div>
-      
-     </div>
+  <div class="container ">
+     
      <div class="row justify-content-center align-items-center fade-in">
       <div class="col-lg-10  col-sm-12">
         <div class="row">
@@ -248,6 +230,9 @@ observeElements() {
 <style>
  /* Estilos CSS */
 /* Estilos para el reloj digital */
+.container{
+  margin-bottom: -40px;
+}
 .clock {
   font-family: 'Roboto', sans-serif;
   font-size: 2em;

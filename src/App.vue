@@ -1,45 +1,42 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-indigo fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand active" href="#"><span class="inter">Inter<span class="sectech">sectech</span></span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon text-danger"></span>
-      </button>
-      <div class="collapse navbar-collapse linknav" id="navbarSupportedContent" ref="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" :class="{ 'active': $route.path === '/home' }" @click="closeNavbar">
-            <router-link to="/home" class="nav-link" aria-current="page">Inicio</router-link>
-          </li>
-          <li class="nav-item" :class="{ 'active': $route.path === '/acerca-de' }" @click="closeNavbar">
-            <router-link to="/acerca-de" class="nav-link">Acerca de</router-link>
-          </li>
-          <li class="nav-item" :class="{ 'active': $route.path === '/servicio' }" @click="closeNavbar">
-            <router-link to="/servicio" class="nav-link">Servicios</router-link>
-          </li>
-        </ul>
-        <div class="row">
-          <div class="col-lg-2 col-sm-4 mb-6">
-            <button @click="toggleDarkMode" class="btn btn-outline-light ml-2" :class="{ 'active': darkMode }" >
-              <i class="fas" :class="{ 'fa-moon': darkMode, 'fa-sun': !darkMode }" @mouseover="toggleHover" @mouseleave="toggleHover"></i>
-            </button>
+  <div class="container col-sm-6">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-indigo fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand active" href="#"><span class="inter">Inter<span class="sectech">sectech</span></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-danger "></span>
+        </button>
+        <div class="collapse navbar-collapse linknav" id="navbarSupportedContent" ref="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" :class="{ 'active': $route.path === '/home' }" @click="closeNavbar">
+              <router-link to="/home" class="nav-link" aria-current="page">Inicio</router-link>
+            </li>
+            <li class="nav-item" :class="{ 'active': $route.path === '/acerca-de' }" @click="closeNavbar">
+              <router-link to="/acerca-de" class="nav-link">Acerca de</router-link>
+            </li>
+            <li class="nav-item" :class="{ 'active': $route.path === '/servicio' }" @click="closeNavbar">
+              <router-link to="/servicio" class="nav-link">Servicios</router-link>
+            </li>
+          </ul>
+          <div class="row">
+            <div class="col-lg-2 col-sm-4 mb-2 tema">
+              <button @click="toggleDarkMode" class="btn btn-outline-light ml-2" :class="{ 'active': darkMode }" >
+                <i class="fas" :class="{ 'fa-moon': darkMode, 'fa-sun': !darkMode }" @mouseover="toggleHover" @mouseleave="toggleHover"></i>
+              </button>
+            </div>
+            <div class="social-icons col-lg-2 col-sm-4 mb-2"> <!-- Agrega la clase mb-2 para separación -->
+              <a href="https://wa.me/50585429144?text=Gracias%20por%20compartir%20informacion%20valiosa%20de%20tecnologia." target="_blank" class="nav-link"><i class="fab fa-whatsapp icons fs-3"></i></a>
+              <a href="https://www.facebook.com/Intersectech" target="_blank" class="nav-link "><i class="fab fa-facebook icons fs-3"></i></a>
+            </div>
           </div>
-          <div class="col-lg-6 col-md-8 mb-2">
-            <input type="email" class="form-control border-warning" placeholder="Suscríbete">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-2">
-            <button class="btn btn-outline-warning">Enviar</button>
-          </div>
-         
-         
-        </div>
-        <!-- Agrega iconos de WhatsApp y Facebook con enlaces específicos -->
-        <div class="social-icons">
-          <a href="https://wa.me/50585429144?text=Gracias%20por%20compartir%20informacion%20valiosa%20de%20tecnologia." target="_blank" class="nav-link"><i class="fab fa-whatsapp icons fs-3"></i></a>
-          <a href="https://www.facebook.com/Intersectech" target="_blank" class="nav-link "><i class="fab fa-facebook icons fs-3"></i></a>
+          
+          <!-- Agrega iconos de WhatsApp y Facebook con enlaces específicos -->
+          
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
+  
   <br><br><br>
   
   
@@ -59,12 +56,15 @@
                 <h5>Enlaces</h5>
                 <ul class="list-unstyled">
                    
-                    <li><a href="#">Copyright</a></li>
-                    <li><a href="#">Cookie policy</a></li>
-                    <li><a href="#">Media kit</a></li>
+                    <li><a href="#Copyright">Copyright</a></li>
+                    
+                    <router-link to="/cookie" class="nav-link" aria-current="page">Cookie policy</router-link>
+                    
                   
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Contacto Intersectech</a></li>
+                    <router-link to="/preguntas" class="nav-link" aria-current="page">Preguntas frecuentes</router-link>
+
+                    <li><a href="tel:+50585429144">Contacto Intersectech</a></li>
+
                 </ul>
             </div>
             <div class="col-md-3">
@@ -94,7 +94,7 @@
       <!-- Contenido del footer -->
   </div>
   <div class="container-fluid bg-secondary text-center py-2">
-      <p class="mb-0 text-light">© 2024 Intersectech. Todos los derechos reservados.</p>
+      <p class="mb-0 text-light" id="Copyright">© 2024 Intersectech. Todos los derechos reservados.</p>
   </div>
 </footer>
 
@@ -139,7 +139,9 @@ export default {
   background-color: #1e1e1e;
   color: #fff;
 }
-
+.tema{
+ margin-right: 100px;
+}
 .btn-outline-light.active {
   background-color: transparent !important;
 }

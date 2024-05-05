@@ -11,6 +11,8 @@ import Login       from '../views/Login.vue';
 import RegisterForm from '../views/RegisterForm.vue';
 import UserListPage from '../views/UserListPage.vue';
 import BlogDetails from '../views/BlogDetails.vue'; // Ruta al componente BlogDetails
+import preguntas from '../views/preguntas.vue';
+import Cookie from '../views/Cookie.vue';
 const routes = [
   {
     path: '/',
@@ -71,6 +73,16 @@ const routes = [
   
   { path: '/blog/:id', name: 'BlogDetails', component: BlogDetails }, // Ruta para la vista de detalles del blog
   
+  {
+    path: '/cookie',
+    name: 'cookie',
+    component: Cookie// Asocia la ruta a la nueva vista
+  },
+  {
+    path: '/preguntas',
+    name: 'preguntas',
+    component: preguntas// Asocia la ruta a la nueva vista
+  },
 ]
 
 const router = createRouter({
