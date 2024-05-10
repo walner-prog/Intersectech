@@ -11,8 +11,8 @@
         <div class="fade-i">
           <h2>{{ post.title }}</h2>
         </div>
-        <p class="card-text text-dark text-opacity-50 fs-6">
-          <span class="text-secondary">Author:</span> {{ post.author }} <br>
+        <p class="card-text text-dark text-opacity-50 fs-6 bg-white p-2">
+          <span class="text-secondary ">Author:</span> {{ post.author }} <br>
           <span class="text-secondary">Categoria:</span> {{ post.category }}
         </p>
         <br>

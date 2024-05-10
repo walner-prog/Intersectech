@@ -26,6 +26,9 @@
             </div>
             <div class="social-icons col-lg-2 col-sm-4 mb-2"> <!-- Agrega la clase mb-2 para separación -->
               <a href="https://wa.me/50585429144?text=Gracias%20por%20compartir%20informacion%20valiosa%20de%20tecnologia." target="_blank" class="nav-link"><i class="fab fa-whatsapp icons fs-3"></i></a>
+
+
+
               <a href="https://www.facebook.com/Intersectech" target="_blank" class="nav-link "><i class="fab fa-facebook icons fs-3"></i></a>
             </div>
           </div>
