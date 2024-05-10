@@ -37,13 +37,14 @@
     </nav>
   </div>
   
-  <br><br><br>
+  <br>
   
   
   <div :class="{ 'dark-theme': isDarkMode }">
     <!-- Contenido de la aplicación -->
     <router-view />
   </div>
+  <br><br><br>
   <footer class="footer bg-dark text-light py-4">
     <div class="container">
         <div class="row">

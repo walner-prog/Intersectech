@@ -52,7 +52,7 @@
       </div>
       
       <div class="row">
-        <div class="col-md-4 mb-2">
+        <div class="col-md-6 mb-2">
           <div class="card border-top border-orange" style="background-color: rgb(0, 12, 116);">
             <div class="card-body">
               <h3 class="card-title text-center text-orange">Libros Electrónicos</h3>
@@ -67,7 +67,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-2">
+       <!-- <div class="col-md-4 mb-2">
           <div class="card" style="background-color: rgb(0, 12, 116);">
             <div class="card-body">
               <h3 class="card-title text-center text-orange">Plantillas</h3>
@@ -82,18 +82,18 @@
               </ul>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 mb-2">
+        </div>-->
+        <div class="col-md-6 mb-2">
           <div class="card" style="background-color: rgb(0, 12, 116);">
             <div class="card-body">
               <h3 class="card-title text-center text-orange">Cursos en Línea</h3>
               <p class="card-text text-center text-secondary">Accede a cursos en línea gratuitos sobre programación, diseño web, desarrollo de aplicaciones y más.</p>
               <ul class="text-secondary">
-                <li><a href="#">Curso 1</a></li>
-                <li><a href="#">Curso 2</a></li>
-                <li><a href="#">Curso 3</a></li>
-                <li><a href="#">Curso 2</a></li>
-                <li><a href="#">Curso 3</a></li>
+                <li><a href="https://platzi.com/cursos/programacion-basica/" target="_blank">Curso Gratis de Programación Básica</a></li>
+                <li><a href="https://www.edx.org/es/aprende/programacion-python" target="_blank">Cursos de programacion con Python</a></li>
+                <li><a href="https://carlosazaustre.es/cursos/programacion-javascript" target="_blank">Curso de PROGRAMACIÓN con JAVASCRIPT</a></li>
+                <li><a href="https://ed.team/cursos/php" target="_blank">PHP 8 desde cero</a></li>
+                <li><a href="https://www.udemy.com/course/aprende-sql-desde-cero-hasta-avanzado-como-un-profesional/" target="_blank">Aprende SQL desde CERO hasta AVANZADO</a></li>
               </ul>
             </div>
           </div>
@@ -259,7 +259,7 @@
     opacity: 1;
   }
   .bg-container{
-    background-color:#fff;
+    
   }
 
   

@@ -97,8 +97,16 @@
         </div>
       </div>
 
-      
-      
+    <!--Botón para cargar más posts 
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-12 text-center">
+        <button @click="loadMorePosts" class="btn btn-primary">
+          {{ loadMoreButtonText }}
+        </button>
+        <p v-if="noMorePosts">No hay más posts disponibles.</p>
+      </div>
+    </div>
+      -->
       
     </div>
   </div>
@@ -106,7 +114,6 @@
 </template>
 
 <script>
-
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import slugify from 'slugify'; // Importa la librería para generar slugs
@@ -116,8 +123,10 @@ export default {
     return {
       posts: [],
       categoryFilter: '', // Nueva propiedad para la búsqueda por nombre de usuario
-      currentTime: ''
-
+      currentTime: '',
+      postsPerPage: 6, // Número de posts por página
+      currentPage: 1, // Página actual
+      noMorePosts: false // Variable para controlar si hay más posts disponibles
     };
   },
   mounted() {
@@ -129,7 +138,7 @@ export default {
   methods: {
     async getUsers() {
   try {
-    const url = `https://api-blog-v1-1.onrender.com/api/posts?nombre=${this.categoryFilter.trim()}`;
+    const url = `https://api-blog-v1-1.onrender.com/api/posts?nombre=${this.categoryFilter.trim()}&_page=${this.currentPage}&_limit=${this.postsPerPage}`;
     const response = await axios.get(url);
     this.posts = response.data;
   } catch (error) {
@@ -220,9 +229,38 @@ observeElements() {
   // Genera el slug a partir del título del post y lo usa en la URL
   const slug = slugify(post.title, { lower: true });
   return `/blog/${slug}`;
-  }
-
   },
+
+  async loadMorePosts() {
+  try {
+    this.currentPage++;
+    const url = `https://api-blog-v1-1.onrender.com/api/posts?nombre=${this.categoryFilter.trim()}&_page=${this.currentPage}&_limit=${this.postsPerPage}`;
+    const response = await axios.get(url);
+    if (response.data.length === 0) {
+      console.log('No hay más posts');
+      this.noMorePosts = true;
+    } else {
+      // Filtrar los nuevos posts para evitar duplicados
+      const newPosts = response.data.filter(post => !this.posts.some(existingPost => existingPost.id === post.id));
+      // Concatenar los nuevos posts filtrados al array existente
+      this.posts = [...this.posts, ...newPosts];
+    }
+  } catch (error) {
+    console.error('Error al cargar más posts:', error);
+    // Manejar el error de carga de posts aquí
+    // Podrías mostrar un mensaje de error en la interfaz de usuario
+  }
+}
+
+
+
+},
+  computed: {
+    loadMoreButtonText() {
+      // Define el texto del botón según si hay más posts para cargar
+      return this.posts.length > 0 ? 'Mostrar más posts' : 'Cargar posts';
+    }
+  }
 };
  
 </script>
