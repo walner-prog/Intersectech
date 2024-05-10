@@ -56,14 +56,14 @@
                 <h5>Enlaces</h5>
                 <ul class="list-unstyled">
                    
-                    <li><a href="#Copyright">Copyright</a></li>
+                    <li><a  class=" text-decoration-none enlaces" href="#Copyright">Copyright</a></li>
                     
-                    <router-link to="/cookie" class="nav-link" aria-current="page">Cookie policy</router-link>
+                   <li> <router-link to="/cookie"  class=" text-decoration-none enlaces" aria-current="page">Cookie policy</router-link></li>
                     
                   
-                    <router-link to="/preguntas" class="nav-link" aria-current="page">Preguntas frecuentes</router-link>
+                   <li><router-link to="/preguntas" class=" text-decoration-none enlaces" aria-current="page">Preguntas frecuentes</router-link></li>  
 
-                    <li><a href="tel:+50585429144">Contacto Intersectech</a></li>
+                    <li><a class="text-decoration-none enlaces" href="tel:+50585429144 ">Contacto Intersectech</a></li>
 
                 </ul>
             </div>
@@ -202,8 +202,43 @@ export default {
     color: orange;
   }
  
-  
-  
+  .nav-item.active {
+     
+   
+    color: orange; 
+
+  }
+   .enlaces{
+    color:white;
+   }
+   .enlaces:hover{
+    color: orange; 
+   }
+
+   .btn-outline-orange:hover{
+    color: orange; 
+   }
+
+     /* Establece el color y la altura de la línea debajo del enlace */
+.nav-link:hover {
+  text-decoration: none; /* Quita el subrayado predeterminado */
+  position: relative; /* Establece la posición relativa para que el pseudo-elemento esté posicionado correctamente */
+}
+
+.nav-link:hover::after {
+  content: ""; /* Agrega un contenido al pseudo-elemento */
+  position: absolute; /* Establece la posición absoluta para que esté fuera del flujo normal del documento */
+  left: 0; /* Coloca el pseudo-elemento al comienzo del enlace */
+  bottom: -5px; /* Ajusta la posición vertical de la línea */
+  width: 100%; /* Establece el ancho de la línea al ancho completo del enlace */
+  height: 2px; /* Establece la altura de la línea */
+  background-color: orange; /* Establece el color de la línea */
+}
+.nav-link.active,
+.nav-link:hover {
+  background-color: rgba(255, 165, 0, 0.2); /* Cambia el color de fondo al pasar el ratón */
+}
+
 
   /* Media query para pantallas pequeñas */
   @media (max-width: 992px) {
